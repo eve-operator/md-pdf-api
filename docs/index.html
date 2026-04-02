@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD→PDF API — Convert Markdown to HTML and PDF</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
+    .hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #1a1a2e, #0f3460); }
+    h1 { font-size: 2.5em; color: #fff; margin-bottom: 16px; }
+    .subtitle { font-size: 1.2em; color: #8892b0; max-width: 600px; margin: 0 auto 30px; }
+    .cta { display: inline-block; background: #e94560; color: #fff; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1em; }
+    .cta:hover { background: #d63851; }
+    section { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+    h2 { color: #e94560; font-size: 1.6em; margin-bottom: 20px; }
+    .endpoints { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .endpoint { background: #1a1a2e; padding: 20px; border-radius: 8px; border-left: 3px solid #e94560; }
+    .endpoint code { color: #e94560; font-weight: 600; }
+    .endpoint p { color: #8892b0; margin-top: 6px; }
+    .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .plan { background: #1a1a2e; padding: 30px 20px; border-radius: 12px; text-align: center; border: 1px solid #2a2a4a; }
+    .plan.featured { border-color: #e94560; }
+    .plan h3 { color: #fff; margin-bottom: 8px; }
+    .plan .price { font-size: 2em; color: #e94560; font-weight: 700; }
+    .plan .price span { font-size: 0.5em; color: #8892b0; }
+    .plan ul { list-style: none; margin-top: 16px; text-align: left; }
+    .plan li { padding: 6px 0; color: #8892b0; }
+    .plan li::before { content: "✓ "; color: #e94560; }
+    pre { background: #1a1a2e; padding: 20px; border-radius: 8px; overflow-x: auto; color: #e94560; font-size: 0.9em; }
+    footer { text-align: center; padding: 40px 20px; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>📄 MD → PDF API</h1>
+    <p class="subtitle">Convert Markdown to HTML, Markdown to PDF, and HTML to PDF. One API call. Clean output.</p>
+    <a href="#pricing" class="cta">Get Started — Free</a>
+  </div>
+
+  <section>
+    <h2>Endpoints</h2>
+    <div class="endpoints">
+      <div class="endpoint">
+        <code>POST /md-to-html</code>
+        <p>Convert Markdown to clean HTML</p>
+      </div>
+      <div class="endpoint">
+        <code>POST /md-to-pdf</code>
+        <p>Convert Markdown directly to a PDF file</p>
+      </div>
+      <div class="endpoint">
+        <code>POST /html-to-pdf</code>
+        <p>Convert HTML to a PDF file</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Try It</h2>
+    <pre># Markdown to PDF
+curl -X POST https://your-api.onrender.com/md-to-pdf \
+  -H "Content-Type: text/plain" \
+  -d "# Hello World\n\nThis is a **test**." \
+  -o output.pdf
+
+# Markdown to HTML
+curl -X POST https://your-api.onrender.com/md-to-html \
+  -H "Content-Type: text/plain" \
+  -d "# Hello World"</pre>
+  </section>
+
+  <section>
+    <h2>Options</h2>
+    <div class="endpoints">
+      <div class="endpoint"><code>?css=...</code><p>Inject custom CSS into the output</p></div>
+      <div class="endpoint"><code>?format=A4|Letter|Legal</code><p>PDF page format (default: A4)</p></div>
+      <div class="endpoint"><code>?margin=20mm</code><p>PDF page margins</p></div>
+      <div class="endpoint"><code>?standalone=true</code><p>Wrap in full HTML document</p></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <div class="pricing">
+      <div class="plan">
+        <h3>Free</h3>
+        <div class="price">$0<span>/mo</span></div>
+        <ul>
+          <li>50 conversions/day</li>
+          <li>All formats</li>
+          <li>No credit card needed</li>
+        </ul>
+      </div>
+      <div class="plan featured">
+        <h3>Pro</h3>
+        <div class="price">$5<span>/mo</span></div>
+        <ul>
+          <li>500 conversions/day</li>
+          <li>Custom CSS</li>
+          <li>Priority processing</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Ultra</h3>
+        <div class="price">$12<span>/mo</span></div>
+        <ul>
+          <li>5,000 conversions/day</li>
+          <li>Batch processing</li>
+          <li>Custom templates</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Use Cases</h2>
+    <div class="endpoints">
+      <div class="endpoint"><code>Documentation</code><p>Convert Markdown docs to PDF for distribution</p></div>
+      <div class="endpoint"><code>Reports</code><p>Generate PDF reports from Markdown templates</p></div>
+      <div class="endpoint"><code>Invoices</code><p>HTML → PDF for invoices, receipts, statements</p></div>
+      <div class="endpoint"><code>E-books</code><p>Markdown manuscripts to formatted PDFs</p></div>
+    </div>
+  </section>
+
+  <footer>Built with Node.js + PDFKit | Open Source on GitHub</footer>
+</body>
+</html>
